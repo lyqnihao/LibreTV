@@ -2,7 +2,7 @@
 const PROXY_URL = '/proxy/';    // 适用于 Cloudflare, Netlify (带重写), Vercel (带重写)
 // const HOPLAYER_URL = 'https://hoplayer.com/index.html';
 const SEARCH_HISTORY_KEY = 'videoSearchHistory';
-const MAX_HISTORY_ITEMS = 5;
+const MAX_HISTORY_ITEMS = 15;
 
 // 密码保护配置
 const PASSWORD_CONFIG = {
@@ -18,6 +18,9 @@ const SITE_CONFIG = {
     logo: 'https://images.icon-icons.com/38/PNG/512/retrotv_5520.png',
     version: '1.0.3'
 };
+
+// 默认加载豆瓣热门
+if (localStorage.getItem('doubanEnabled') === null) { localStorage.setItem('doubanEnabled', 'true'); };
 
 // API站点配置
 const API_SITES = {
@@ -39,7 +42,7 @@ const API_SITES = {
         name: '天涯资源',
     },
     ffzy: {
-        api: 'http://ffzy5.tv',
+        api: 'http://api.ffzyapi.com',
         name: '非凡影视',
         detail: 'http://ffzy5.tv',
     },
@@ -107,47 +110,88 @@ const API_SITES = {
         name: 'iKun资源'
     },
     // 下面是一些成人内容的API源，默认隐藏，使用本项目浏览黄色内容违背项目初衷
-    // ckzy: {
-    //     api: 'https://www.ckzy1.com',
-    //     name: 'CK资源',
-    //     adult: true
-    // },
-    // jkun: {
-    //     api: 'https://jkunzyapi.com',
-    //     name: 'jkun资源',
-    //     adult: true
-    // },
-    // bwzy: {
-    //     api: 'https://api.bwzym3u8.com',
-    //     name: '百万资源',
-    //     adult: true
-    // },
-    // souav: {
-    //     api: 'https://api.souavzy.vip',
-    //     name: 'souav资源',
-    //     adult: true
-    // },
-    // r155: {
-    //     api: 'https://155api.com',
-    //     name: '155资源',
-    //     adult: true
-    // },
-    // lsb: {
-    //     api: 'https://apilsbzy1.com',
-    //     name: 'lsb资源',
-    //     adult: true
-    // },
-    // huangcang: {
-    //     api: 'https://hsckzy.vip',
-    //     name: '黄色仓库',
-    //     adult: true,
-    //     detail: 'https://hsckzy.vip'
-    // },
-    // yutu: {
-    //     api: 'https://yutuzy10.com',
-    //     name: '玉兔资源',
-    //     adult: true
-    // },
+    ckzy: {
+        api: 'https://www.ckzy1.com',
+        name: 'CK资源',
+        adult: true
+    },
+    jkun: {
+        api: 'https://jkunzyapi.com',
+        name: 'jkun资源',
+        adult: true
+    },
+    bwzy: {
+        api: 'https://api.bwzym3u8.com',
+        name: '百万资源',
+        adult: true
+    },
+    souav: {
+        api: 'https://api.souavzy.vip',
+        name: 'souav资源',
+        adult: true
+    },
+    r155: {
+        api: 'https://155api.com',
+        name: '155资源',
+        adult: true
+    },
+    lsb: {
+        api: 'https://apilsbzy1.com',
+        name: 'lsb资源',
+        adult: true
+    },
+    huangcang: {
+        api: 'https://hsckzy.vip',
+        name: '黄色仓库',
+        adult: true,
+        detail: 'https://hsckzy.vip'
+    },
+    yutu: {
+        api: 'https://yutuzy10.com',
+        name: '玉兔资源',
+        adult: true
+    },
+// 您可以按需添加更多源
+    siwa: {
+        api: 'https://siwazyw.tv',
+        name: '丝袜资源',
+        adult: true
+    },
+    hgzy: {
+        api: 'https://www.avre06.com',
+        name: '黄瓜资源',
+        adult: true
+    },
+    xxb: {
+        api: 'https://www.xxibaozyw.com',
+        name: 'x细胞',
+        adult: true
+    },
+    syzy: {
+        api: 'https://shayuapi.com',
+        name: '鲨鱼资源',
+        adult: true
+    },
+    slzy: {
+        api: 'https://slapibf.com',
+        name: '森林资源',
+        adult: true
+    },
+    clzy: {
+        api: 'https://www.caoliuzyw.com',
+        name: '草榴资源',
+        adult: true
+    },
+    lbzy: {
+        api: 'http://lbapiby.com',
+        name: '乐播资源',
+        adult: true
+    },
+    fhzy: {
+        api: 'http://fhapi9.com',
+        name: '番号资源',
+        adult: true
+    },
 };
 
 // 添加聚合搜索的配置选项
@@ -228,4 +272,4 @@ const CUSTOM_API_CONFIG = {
 };
 
 // 新增隐藏内置黄色采集站API的变量，默认为true
-const HIDE_BUILTIN_ADULT_APIS = true;
+const HIDE_BUILTIN_ADULT_APIS = false;
