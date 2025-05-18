@@ -41,6 +41,10 @@ const API_SITES = {
         api: 'https://tyyszy.com',
         name: '天涯资源',
     },
+    // xiaomaomi: {
+    //     api: 'https://zy.xiaomaomi.cc',
+    //     name: '小猫咪资源',
+    // },
     ffzy: {
         api: 'http://api.ffzyapi.com',
         name: '非凡影视',
@@ -109,7 +113,7 @@ const API_SITES = {
         api: 'https://ikunzyapi.com',
         name: 'iKun资源'
     },
-    // 下面是一些成人内容的API源，默认隐藏，使用本项目浏览黄色内容违背项目初衷
+// 下面是一些成人内容的API源，默认隐藏，使用本项目浏览黄色内容违背项目初衷
     ckzy: {
         api: 'https://www.ckzy1.com',
         name: 'CK资源',
@@ -152,6 +156,36 @@ const API_SITES = {
         adult: true
     },
 // 您可以按需添加更多源
+    maotai: {
+        api: 'https://caiji.maotaizy.cc',
+        name: '茅台资源',
+    //  adult: true
+    },
+    xiami: {
+        api: 'https://zy.hls.one',
+        name: '虾米资源',
+    //  adult: true
+    },
+    mozhao: {
+        api: 'https://mozhuazy.com',
+        name: '魔爪资源',
+    //  adult: true
+    },
+    haohua: {
+        api: 'https://hhzyapi.com',
+        name: '豪华资源',
+    //  adult: true
+    },
+    subo: {
+        api: 'https://subocaiji.com',
+        name: '速播资源',
+    //  adult: true
+    },
+    jinying: {
+        api: 'https://jyzyapi.com',
+        name: '金鹰资源',
+    //  adult: true
+    },
     siwa: {
         api: 'https://siwazyw.tv',
         name: '丝袜资源',
@@ -188,6 +222,31 @@ const API_SITES = {
         adult: true
     },
     fhzy: {
+        api: 'http://fhapi9.com',
+        name: '番号资源',
+        adult: true
+    },
+    taohua: {
+        api: 'https://thzy1.me',
+        name: '桃花资源',
+        adult: true
+    },
+    ddzy: {
+        api: 'https://api.ddapi.cc',
+        name: '滴滴资源',
+        adult: true
+    },
+    jpxzy: {
+        api: 'https://www.jingpinx.com',
+        name: '精品x资源',
+        adult: true
+    },
+    ljzy: {
+        api: 'https://apilj.com',
+        name: '辣椒资源',
+        adult: true
+    },
+    lsbzy: {
         api: 'http://fhapi9.com',
         name: '番号资源',
         adult: true
