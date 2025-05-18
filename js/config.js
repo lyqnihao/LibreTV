@@ -246,11 +246,6 @@ const API_SITES = {
         name: '辣椒资源',
         adult: true
     },
-    lsbzy: {
-        api: 'http://fhapi9.com',
-        name: '番号资源',
-        adult: true
-    },
 };
 
 // 添加聚合搜索的配置选项
