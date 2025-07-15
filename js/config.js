@@ -2,7 +2,7 @@
 const PROXY_URL = '/proxy/';    // 适用于 Cloudflare, Netlify (带重写), Vercel (带重写)
 // const HOPLAYER_URL = 'https://hoplayer.com/index.html';
 const SEARCH_HISTORY_KEY = 'videoSearchHistory';
-const MAX_HISTORY_ITEMS = 5;
+const MAX_HISTORY_ITEMS = 15;
 
 // 密码保护配置
 const PASSWORD_CONFIG = {
@@ -39,10 +39,11 @@ const API_SITES = {
         api: 'https://tyyszy.com/api.php/provide/vod',
         name: '天涯资源',
     },
-    // xiaomaomi: {
-    //     api: 'https://zy.xiaomaomi.cc/api.php/provide/vod',
-    //     name: '小猫咪资源',
-    // },
+    xiaomaomi: {
+        api: 'https://zy.xmm.hk/api.php/provide/vod/',
+        name: '小猫咪资源',
+        detail: 'http://zy.xmm.hk',
+    },
     ffzy: {
         api: 'http://ffzy5.tv/api.php/provide/vod',
         name: '非凡影视',
@@ -78,6 +79,11 @@ const API_SITES = {
         api: 'https://dbzy.tv/api.php/provide/vod',
         name: '豆瓣资源',
     },
+    huya: {
+        api: 'https://www.huyaapi.com/api.php/provide/vod',
+        name: '虎牙资源',
+        detail: 'https://www.huyaapi.com',
+    },
     mozhua: {
         api: 'https://mozhuazy.com/api.php/provide/vod',
         name: '魔爪资源',
@@ -110,60 +116,139 @@ const API_SITES = {
         api: 'https://ikunzyapi.com/api.php/provide/vod',
         name: 'iKun资源'
     },
-    testSource: {
-        api: 'https://www.example.com/api.php/provide/vod',
-        name: '空内容测试源',
+// 下面是一些成人内容的API源，默认隐藏，使用本项目浏览黄色内容违背项目初衷
+    ckzy: {
+        api: 'https://www.ckzy1.com/api.php/provide/vod',
+        name: 'CK资源',
         adult: true
     },
-    // 下面是一些成人内容的API源，默认隐藏，使用本项目浏览黄色内容违背项目初衷
-    // 互联网上传播的色情内容将人彻底客体化、工具化，是性别解放和人类平等道路上的巨大障碍。
-    // 这些黄色影片是资本主义父权制压迫的最恶毒体现，它将暴力和屈辱商品化，践踏人的尊严，对受害者造成无法弥愈的伤害，并毒害社会关系。
-    // 资本为了利润，不惜将最卑劣的剥削（包括对受害者和表演者的剥削）和暴力商品化，
-    // 把性别剥削塑造成“性享受”麻痹观众的意识，转移我们对现实生活中矛盾和压迫的注意力。
-    // 这些影片和背后的产业已经使数百万男女“下海”，出卖自己的身体，甚至以此为生计。
-    // 而作为观众无辜吗？毫无疑问，他们促成了黄色产业链的再生产。
-    // 我们提供此警告，是希望您能认清这些内容的本质——它们是压迫和奴役的工具，而非娱乐。
-    // ckzy: {
-    //     api: 'https://www.ckzy1.com',
-    //     name: 'CK资源',
-    //     adult: true
-    // },
-    // jkun: {
-    //     api: 'https://jkunzyapi.com',
-    //     name: 'jkun资源',
-    //     adult: true
-    // },
-    // bwzy: {
-    //     api: 'https://api.bwzym3u8.com',
-    //     name: '百万资源',
-    //     adult: true
-    // },
-    // souav: {
-    //     api: 'https://api.souavzy.vip',
-    //     name: 'souav资源',
-    //     adult: true
-    // },
-    // r155: {
-    //     api: 'https://155api.com',
-    //     name: '155资源',
-    //     adult: true
-    // },
-    // lsb: {
-    //     api: 'https://apilsbzy1.com',
-    //     name: 'lsb资源',
-    //     adult: true
-    // },
-    // huangcang: {
-    //     api: 'https://hsckzy.vip',
-    //     name: '黄色仓库',
-    //     adult: true,
-    //     detail: 'https://hsckzy.vip'
-    // },
-    // yutu: {
-    //     api: 'https://yutuzy10.com',
-    //     name: '玉兔资源',
-    //     adult: true
-    // },
+    jkun: {
+        api: 'https://jkunzyapi.com/api.php/provide/vod',
+        name: 'jkun资源',
+        adult: true
+    },
+    bwzy: {
+        api: 'https://api.bwzym3u8.com/api.php/provide/vod',
+        name: '百万资源',
+        adult: true
+    },
+    souav: {
+        api: 'https://api.souavzy.vip/api.php/provide/vod',
+        name: 'souav资源',
+        adult: true
+    },
+    r155: {
+        api: 'https://155api.com/api.php/provide/vod',
+        name: '155资源',
+        adult: true
+    },
+    lsb: {
+        api: 'https://apilsbzy1.com/api.php/provide/vod',
+        name: 'lsb资源',
+        adult: true
+    },
+    huangcang: {
+        api: 'https://hsckzy.vip/api.php/provide/vod',
+        name: '黄色仓库',
+        adult: true,
+        detail: 'https://hsckzy.vip'
+    },
+    yutu: {
+        api: 'https://yutuzy10.com/api.php/provide/vod',
+        name: '玉兔资源',
+        adult: true
+    },
+// 您可以按需添加更多源
+    maotai: {
+        api: 'https://caiji.maotaizy.cc/api.php/provide/vod',
+        name: '茅台资源',
+    //  adult: true
+    },
+    xiami: {
+        api: 'https://zy.hls.one/api.php/provide/vod',
+        name: '虾米资源',
+    //  adult: true
+    },
+    mozhao: {
+        api: 'https://mozhuazy.com/api.php/provide/vod',
+        name: '魔爪资源',
+    //  adult: true
+    },
+    haohua: {
+        api: 'https://hhzyapi.com/api.php/provide/vod',
+        name: '豪华资源',
+    //  adult: true
+    },
+    subo: {
+        api: 'https://subocaiji.com/api.php/provide/vod',
+        name: '速播资源',
+    //  adult: true
+    },
+    jinying: {
+        api: 'https://jyzyapi.com/api.php/provide/vod',
+        name: '金鹰资源',
+    //  adult: true
+    },
+    siwa: {
+        api: 'https://siwazyw.tv/api.php/provide/vod',
+        name: '丝袜资源',
+        adult: true
+    },
+    hgzy: {
+        api: 'https://www.avre06.com/api.php/provide/vod',
+        name: '黄瓜资源',
+        adult: true
+    },
+    xxb: {
+        api: 'https://www.xxibaozyw.com/api.php/provide/vod',
+        name: 'x细胞',
+        adult: true
+    },
+    syzy: {
+        api: 'https://shayuapi.com/api.php/provide/vod',
+        name: '鲨鱼资源',
+        adult: true
+    },
+    slzy: {
+        api: 'https://slapibf.com/api.php/provide/vod',
+        name: '森林资源',
+        adult: true
+    },
+    clzy: {
+        api: 'https://www.caoliuzyw.com/api.php/provide/vod',
+        name: '草榴资源',
+        adult: true
+    },
+    lbzy: {
+        api: 'http://lbapiby.com/api.php/provide/vod',
+        name: '乐播资源',
+        adult: true
+    },
+    fhzy: {
+        api: 'http://fhapi9.com/api.php/provide/vod',
+        name: '番号资源',
+        adult: true
+    },
+    taohua: {
+        api: 'https://thzy1.me/api.php/provide/vod',
+        name: '桃花资源',
+        adult: true
+    },
+    ddzy: {
+        api: 'https://api.ddapi.cc/api.php/provide/vod',
+        name: '滴滴资源',
+        adult: true
+    },
+    jpxzy: {
+        api: 'https://www.jingpinx.com/api.php/provide/vod',
+        name: '精品x资源',
+        adult: true
+    },
+    ljzy: {
+        api: 'https://apilj.com/api.php/provide/vod',
+        name: '辣椒资源',
+        adult: true
+    },
 
     // 下面是资源失效率高的API源，不建议使用
     // subo: {
