@@ -115,6 +115,10 @@ const API_SITES = {
     ikun: {
         api: 'https://ikunzyapi.com/api.php/provide/vod',
         name: 'iKun资源'
+    },    
+    lzi: {
+        api: 'https://cj.lziapi.com/api.php/provide/vod/',
+        name: '量子资源站'
     },
 // 下面是一些成人内容的API源，默认隐藏，使用本项目浏览黄色内容违背项目初衷
     ckzy: {
